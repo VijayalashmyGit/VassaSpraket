@@ -1,0 +1,35 @@
+<mat-dialog-actions>
+  <button mat-icon-button [mat-dialog-close]="true">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-dialog-actions>
+
+
+<div class="popup-container">
+  <div class="btn-container">
+    <button mat-fab matTooltip="Primary" color="primary" class="prev-btn"
+            [hidden]="popupSortOrder == 1"
+            (click)="loadPrevPopup()">
+      <
+    </button>
+  </div>
+
+  <div class="pdf-container">
+    <app-pdfviewer [pdfUrl]="data.pdfUrl"
+                   [currentPageNumber]="croppedPdfPageNumber"
+                   (isPageLoaded)="isPageLoaded($event)">
+    </app-pdfviewer>
+    <img src="../assets/loader.gif" [hidden]="!isShowLoader">
+
+  </div>
+
+  <div class="btn-container">
+    <button mat-fab matTooltip="Primary" color="primary" class="nxt-btn" (click)="loadNxtPopup()" [hidden]="popupSortOrder === totalPopupCount">
+      >
+    </button>
+  </div>
+</div>
+
+
+
+

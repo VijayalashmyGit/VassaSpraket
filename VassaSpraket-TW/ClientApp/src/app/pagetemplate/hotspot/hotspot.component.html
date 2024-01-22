@@ -1,0 +1,31 @@
+<ng-container *ngIf="filteredData">
+  <ng-container *ngFor="let pos of filteredData; let i = index">
+
+    <div class="hotspot-container">
+      <div class="inner-container"
+           [ngStyle]="{
+       'top': (pos.label_Top - 0.5)+ '%',
+       'left': (pos.label_Left) + '%',
+       'width': (pos.label_Width + 5) + 'vh'
+     }">
+
+        <app-pdfviewer [pdfUrl]="pdfUrl"
+                       [currentPageNumber]="pos.croppedPdfPageNumber"
+                       [ngStyle]="{'opacity': pos.isVisible ? 1 : 0}">
+        </app-pdfviewer>
+      </div>
+    </div>
+
+    <label class="clickable-label"
+           (mouseenter)="onMouseOver(i)"
+           (mouseleave)="onMouseLeave(i)"
+           (click)="openPopup(pos.croppedPdfPageNumber, pos.popupSortOrder)"
+           [ngStyle]="{
+             'top': pos.label_Top + '%',
+             'left': pos.label_Left + '%',
+             'width': pos.label_Width + 'vh',
+             'height': pos.label_Height + '%'
+           }">
+    </label>
+  </ng-container>
+</ng-container>

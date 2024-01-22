@@ -1,0 +1,31 @@
+<ng-container *ngIf="model">
+
+  <div class="pages-container">
+    <div class="btn-container">
+      <button mat-fab matTooltip="Primary" color="primary" class="prev-btn"
+              [hidden]="currentPageNumber === 1"
+              (click)="loadPrevPage()">
+        <
+      </button>
+    </div>
+
+    <div class="pdf-container">
+      <app-pdfviewer [pdfUrl]="model.pdfSrc"
+                     [thumbnailImgUrl]="model.thumbnailImg"
+                     [currentPageNumber]="currentPageNumber"
+                     (totalPages)="getTotalPages($event)"
+                     (isPageLoaded)="isPageLoaded($event)"></app-pdfviewer>
+      <app-hotspot [model]="model" [currentPageNumber]="currentPageNumber"></app-hotspot>
+    </div>
+
+    <div class="btn-container">
+      <button mat-fab matTooltip="Primary" color="primary" class="nxt-btn" (click)="loadNxtPage()" [hidden]="((currentPageNumber == totalPageCount)||isShowNavBtn)">
+        >
+      </button>
+    </div>
+  </div>
+
+</ng-container>
+
+
+<button mat-raised-button color="accent" class="back_btn" (click)="goHomePage()">Back</button>
