@@ -11,15 +11,15 @@ import { MatCardModule } from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent    
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    BrowserModule,
     HttpClientModule,
     FormsModule,
     MatCardModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: HomeComponent, pathMatch: 'full' },    
       {
         path: 'chapter/:id',
         loadChildren: () => import('./lazyload.module').then(m => m.LazyLoadModule)

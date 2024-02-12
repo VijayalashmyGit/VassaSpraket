@@ -12,6 +12,7 @@
   left: 0%;
   top: 0%;
   overflow: hidden;
+  pointer-events:none;
 
   .inner-container {
     position: absolute;
